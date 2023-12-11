@@ -1,0 +1,16 @@
+# action.yml
+name: 'owasp-results'
+description: 'Format JSON file into usefully formatted output for insertion into a Github PR'
+inputs:
+  json:  # id of input
+    description: 'Raw OWASP ZAP scan output'
+    required: true
+outputs:
+  contents: # id of output
+    description: 'Markdown formatted output'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.json }}
+
